@@ -1,0 +1,17 @@
+{
+  "name": "download-speedtest",
+  "version": "1.0.0",
+  "description": "Console script: N sequential requests to a URL, measures average time, total bytes and download speed",
+  "type": "module",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "start": "node src/app/main.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.7.0"
+  }
+}
