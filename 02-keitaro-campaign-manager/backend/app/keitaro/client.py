@@ -46,8 +46,9 @@ class KeitaroClient:
     async def list_domains(self) -> list[dict[str, Any]]:
         return await self._request("GET", "/domains")
 
-    async def list_groups(self) -> list[dict[str, Any]]:
-        return await self._request("GET", "/groups")
+    async def list_groups(self, group_type: str = "campaigns") -> list[dict[str, Any]]:
+        # type обязателен: campaigns | offers | landings | domains
+        return await self._request("GET", f"/groups?type={group_type}")
 
     async def list_traffic_sources(self) -> list[dict[str, Any]]:
         return await self._request("GET", "/traffic_sources")

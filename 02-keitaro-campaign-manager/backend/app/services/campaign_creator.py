@@ -56,7 +56,7 @@ async def create_adrobot_campaign(
             "state": "active",
             "weight": 1,
             "position": 1,
-            "filters": [{"name": "geo", "mode": "accept", "payload": [geo]}],
+            "filters": [{"name": "country", "mode": "accept", "payload": [geo]}],
         }
     )
 

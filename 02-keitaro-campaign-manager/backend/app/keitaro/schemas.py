@@ -1,7 +1,7 @@
 """Pydantic-модели сущностей Keitaro (то, что возвращаем фронту)."""
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class Offer(BaseModel):
@@ -40,6 +40,16 @@ class Stream(BaseModel):
     action_options: dict[str, Any] = {}
 
     model_config = {"extra": "ignore", "populate_by_name": True}
+
+    @field_validator("offers", "filters", mode="before")
+    @classmethod
+    def _none_to_list(cls, v: Any) -> Any:
+        return [] if v is None else v
+
+    @field_validator("action_options", mode="before")
+    @classmethod
+    def _none_to_dict(cls, v: Any) -> Any:
+        return {} if v is None else v
 
 
 class Campaign(BaseModel):
